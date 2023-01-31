@@ -32,8 +32,8 @@ submit = st.button("완료")
 if title and url and submit:
 	doc_ref = db.collection("user0001").document("2023-01-31")
 	doc_ref.set({
-		"title": title,
-		"url": url
+		"daylog": title,
+		"emotion": url
 	})
 
 # And then render each post, using some light Markdown
@@ -45,3 +45,8 @@ for doc in posts_ref.stream():
 
 	st.subheader(f"Post: {title}")
 	st.write(f":link: [{url}]({url})")
+
+# For a reference to a collection, we use .stream() instead of .get()
+for doc in posts_ref.stream():
+	st.write("The id is: ", doc.id)
+	st.write("The contents are: ", doc.to_dict())
