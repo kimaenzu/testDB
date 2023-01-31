@@ -40,8 +40,8 @@ if title and url and submit:
 posts_ref = db.collection("user0001")
 for doc in posts_ref.stream():
 	post = doc.to_dict()
-	title = post["title"]
-	url = post["url"]
+	title = post["daylog"]
+	url = post["emotion"]
 
 	st.subheader(f"Post: {title}")
 	st.write(f":link: [{url}]({url})")
